@@ -44,7 +44,7 @@
                             Console.Write("Create name of new product: ");
                             string input = Console.ReadLine();
                             Console.Write("Enter new price: ");
-                            if (int.TryParse(Console.ReadLine(), out int price))
+                            if (double.TryParse(Console.ReadLine(), out double price))
                             {
                                 products.Add(new Product(input, price));
                                 Console.WriteLine("Product successfully added");
@@ -62,7 +62,7 @@
                                 Console.WriteLine($"{i + 1}. {products[i].Name}, ${products[i].Price}");
                             }
 
-                            if (int.TryParse(Console.ReadLine(), out int idRemove) && idRemove > 0 && idRemove < products.Count)
+                            if (int.TryParse(Console.ReadLine(), out int idRemove))
                             {
                                 try
                                 {
@@ -138,10 +138,13 @@
                             }
                             Console.WriteLine($"Total: ${total}");
                             break;
+
                         case 5:
                             Console.WriteLine("Shutting down...");
                             return;
+
                         default:
+                            Console.WriteLine("This option does not exist yet. Try again");
                             break;
                     }
                 }
