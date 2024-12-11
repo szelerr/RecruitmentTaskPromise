@@ -64,12 +64,19 @@
 
                             if (int.TryParse(Console.ReadLine(), out int idRemove) && idRemove > 0 && idRemove < products.Count)
                             {
-                                products.Remove(products[idRemove - 1]);
-                                Console.WriteLine("Product successfully removed");
+                                try
+                                {
+                                    products.Remove(products[idRemove - 1]);
+                                    Console.WriteLine("Product successfully removed");
+                                }
+                                catch (ArgumentOutOfRangeException ex)
+                                {
+                                    Console.WriteLine("Invalid id. Returning to main menu");
+                                }
                             }
                             else
                             {
-                                Console.WriteLine("Incorrect id. Returning to main menu");
+                                Console.WriteLine("Invalid id. Returning to main menu");
                             }
                             break;
 
