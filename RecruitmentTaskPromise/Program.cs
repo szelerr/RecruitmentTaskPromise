@@ -7,7 +7,7 @@
             string[] options = [
                 "1. Add product",
                 "2. Remove product",
-                "3. Add product",
+                "3. Buy product",
                 "4. View basket",
                 "5. Exit"
                 ];
