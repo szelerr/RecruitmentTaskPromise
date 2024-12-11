@@ -37,10 +37,11 @@
 
                 if (int.TryParse(Console.ReadLine(), out num) && num > 0 && num <= options.Length)
                 {
+                    Console.Clear();
                     switch (num)
                     {
                         case 1:
-                            Console.Write("\nCreate name of new product: ");
+                            Console.Write("Create name of new product: ");
                             string input = Console.ReadLine();
                             Console.Write("Enter new price: ");
                             if (int.TryParse(Console.ReadLine(), out int price))
@@ -97,6 +98,38 @@
                             break;
 
                         case 4:
+                            if (basket.Count == 0)
+                            {
+                                Console.WriteLine("Your basket is empty :(");
+                            }
+
+                            double total = basket.Sum(b => b.Price);
+
+                            if (basket.Count == 2)
+                            {
+                                double cheapest = basket.OrderBy(b => b.Price).FirstOrDefault().Price;
+                                total -= cheapest * 0.1;
+                                Console.WriteLine("2 items in basket - 10% discount for the cheapest one!");
+                            }
+
+                            if (basket.Count >= 3)
+                            {
+                                double cheapest = basket.OrderBy(b => b.Price).FirstOrDefault().Price;
+                                total -= cheapest * 0.2;
+                                Console.WriteLine("Over 3 items in basket - 20% discount for the cheapest one!");
+                            }
+
+                            if (total > 5000)
+                            {
+                                total *= 0.95;
+                                Console.WriteLine("Order amount over 5000 - 5% discount for the full order!");
+                            }
+
+                            for (int i = 0; i < basket.Count; i++)
+                            {
+                                Console.WriteLine($"{i + 1}. {basket[i].Name}, default price ${basket[i].Price}");
+                            }
+                            Console.WriteLine($"Total: ${total}");
                             break;
                         case 5:
                             Console.WriteLine("Shutting down...");
