@@ -32,13 +32,23 @@
                     Console.WriteLine(i);
                 }
 
-                bool isNum = int.TryParse(Console.ReadLine(), out num);
-
-                if (isNum && num > 0 && num <= options.Length)
+                if (int.TryParse(Console.ReadLine(), out num) && num > 0 && num <= options.Length)
                 {
                     switch (num)
                     {
                         case 1:
+                            Console.WriteLine("\nCreate name of new product:");
+                            string input = Console.ReadLine();
+                            Console.WriteLine("Enter new price");
+                            if (int.TryParse(Console.ReadLine(), out int price))
+                            {
+                                products.Add(new Product(input, price));
+                                Console.WriteLine("Product successfully added.");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Price must be a number. Try again");
+                            }
                             break;
                         case 2:
                             break;
