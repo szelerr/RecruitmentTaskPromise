@@ -7,8 +7,9 @@
             string[] options = [
                 "1. Add product",
                 "2. Remove product",
-                "3. Display Basket",
-                "4. Exit"
+                "3. Add product",
+                "4. View basket",
+                "5. Exit"
                 ];
 
             List<Product> products = new List<Product>
@@ -19,6 +20,8 @@
                 new Product("Monitor", 1000),
                 new Product("Debugging duck", 66)
             };
+
+            List<Product> basket = new List<Product>();
 
             bool isRunning = true;
             int num;
@@ -53,13 +56,14 @@
 
                         case 2:
                             Console.WriteLine("Pick id that you would like to remove");
-                            for(int i=0; i<products.Count; i++)
+                            for (int i = 0; i < products.Count; i++)
                             {
-                                Console.WriteLine($"{i + 1}. {products[i].Name}");
+                                Console.WriteLine($"{i + 1}. {products[i].Name}, ${products[i].Price}");
                             }
-                            if (int.TryParse(Console.ReadLine(), out int id) && id > 0 && id < products.Count)
+
+                            if (int.TryParse(Console.ReadLine(), out int idRemove) && idRemove > 0 && idRemove < products.Count)
                             {
-                                products.Remove(products[id - 1]);
+                                products.Remove(products[idRemove - 1]);
                                 Console.WriteLine("Product successfully removed");
                             }
                             else
@@ -67,9 +71,34 @@
                                 Console.WriteLine("Incorrect id. Returning to main menu");
                             }
                             break;
+
                         case 3:
+                            Console.WriteLine("Which product would you like to add to the basket?");
+                            for (int i = 0; i < products.Count; i++)
+                            {
+                                Console.WriteLine($"{i + 1}. {products[i].Name}, ${products[i].Price}");
+                            }
+                            if (int.TryParse(Console.ReadLine(), out int idBasket))
+                            {
+                                try
+                                {
+                                    basket.Add(products[idBasket - 1]);
+                                    Console.WriteLine("Product successfully added to the basket");
+                                }
+                                catch (ArgumentOutOfRangeException ex)
+                                {
+                                    Console.WriteLine("Product id is not available. Returning to main menu");
+                                }
+                            }
+                            else
+                            {
+                                Console.WriteLine("Invalid product id. Returning to main menu");
+                            }
                             break;
+
                         case 4:
+                            break;
+                        case 5:
                             Console.WriteLine("Shutting down...");
                             return;
                         default:
