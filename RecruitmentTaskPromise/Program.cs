@@ -11,6 +11,15 @@
                 "4. Exit"
                 ];
 
+            List<Product> products = new List<Product>
+            {
+                new Product("Laptop", 2500),
+                new Product("Keyboard", 120),
+                new Product("Mouse", 90),
+                new Product("Monitor", 1000),
+                new Product("Debugging duck", 66)
+            };
+
             bool isRunning = true;
             int num;
 
