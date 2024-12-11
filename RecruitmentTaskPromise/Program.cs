@@ -35,7 +35,7 @@
                     Console.WriteLine(i);
                 }
 
-                if (int.TryParse(Console.ReadLine(), out num) && num > 0 && num <= options.Length)
+                if (int.TryParse(Console.ReadLine(), out num))
                 {
                     Console.Clear();
                     switch (num)
@@ -150,6 +150,7 @@
                 }
                 else
                 {
+                    Console.Clear();
                     Console.WriteLine("Unknown option. Try again");
                 }
             }
