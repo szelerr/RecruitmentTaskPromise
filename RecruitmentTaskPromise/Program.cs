@@ -37,20 +37,35 @@
                     switch (num)
                     {
                         case 1:
-                            Console.WriteLine("\nCreate name of new product:");
+                            Console.Write("\nCreate name of new product: ");
                             string input = Console.ReadLine();
-                            Console.WriteLine("Enter new price");
+                            Console.Write("Enter new price: ");
                             if (int.TryParse(Console.ReadLine(), out int price))
                             {
                                 products.Add(new Product(input, price));
-                                Console.WriteLine("Product successfully added.");
+                                Console.WriteLine("Product successfully added");
                             }
                             else
                             {
-                                Console.WriteLine("Price must be a number. Try again");
+                                Console.WriteLine("Price must be a number. Returning to main menu");
                             }
                             break;
+
                         case 2:
+                            Console.WriteLine("Pick id that you would like to remove");
+                            for(int i=0; i<products.Count; i++)
+                            {
+                                Console.WriteLine($"{i + 1}. {products[i].Name}");
+                            }
+                            if (int.TryParse(Console.ReadLine(), out int id) && id > 0 && id < products.Count)
+                            {
+                                products.Remove(products[id - 1]);
+                                Console.WriteLine("Product successfully removed");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Incorrect id. Returning to main menu");
+                            }
                             break;
                         case 3:
                             break;
