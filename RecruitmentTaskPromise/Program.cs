@@ -28,7 +28,7 @@
 
             while (isRunning)
             {
-                Console.WriteLine("Welcome to our Tech Store! What do you want to do?");
+                Console.WriteLine("Welcome to our Tech Store! What do you want to do? (number)");
 
                 foreach (string i in options)
                 {
@@ -56,7 +56,7 @@
                             break;
 
                         case 2:
-                            Console.WriteLine("Pick id that you would like to remove");
+                            Console.WriteLine("Pick id that you would like to remove (number)");
                             for (int i = 0; i < products.Count; i++)
                             {
                                 Console.WriteLine($"{i + 1}. {products[i].Name}, ${products[i].Price}");
@@ -81,7 +81,7 @@
                             break;
 
                         case 3:
-                            Console.WriteLine("Which product would you like to add to the basket?");
+                            Console.WriteLine("Which product would you like to add to the basket? (number)");
                             for (int i = 0; i < products.Count; i++)
                             {
                                 Console.WriteLine($"{i + 1}. {products[i].Name}, ${products[i].Price}");
